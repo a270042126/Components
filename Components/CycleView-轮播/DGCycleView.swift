@@ -111,8 +111,9 @@ extension DGCycleView{
 extension DGCycleView: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard models != nil else {return}
+      
         let scrollViewW = self.bounds.width
+        guard models != nil && scrollViewW != 0 else {return}
         let contentOffsetX = scrollView.contentOffset.x
         
         pageControl.currentPage = Int((contentOffsetX + scrollViewW * 0.5) / scrollViewW) % models!.count
