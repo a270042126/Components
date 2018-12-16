@@ -8,14 +8,20 @@
 
 import UIKit
 
+protocol DGCycleViewDelegate: class{
+    func dgcycleViewDidSelected(model: Any)
+}
+
 class DGCycleView: UIView {
+    
+    weak var delegate: DGCycleViewDelegate?
     
     var models:[Any]? {
         didSet{
+            guard models != nil else {return}
             collectionView.reloadData()
             pageControl.numberOfPages = models?.count ?? 0
-            removeCycleTimer()
-            addCycleTimer()
+            resetScroll()
         }
     }
 
@@ -35,7 +41,7 @@ class DGCycleView: UIView {
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: self!.bounds, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isPagingEnabled = true
         collectionView.delegate = self
@@ -45,7 +51,6 @@ class DGCycleView: UIView {
     }()
     
     private var cycleTimer:Timer?
-    private var oldContentOffsetX: CGFloat = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -67,13 +72,25 @@ class DGCycleView: UIView {
     }
     
     override func layoutSubviews() {
-        collectionView.frame = self.bounds
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = self.bounds.size
+        updateUI()
     }
 }
 
 extension DGCycleView{
+    private func updateUI(){
+        collectionView.frame = self.bounds
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = self.bounds.size
+        resetScroll()
+    }
+    
+    private func resetScroll(){
+        removeCycleTimer()
+        let offsetX = self.bounds.width * CGFloat(models!.count)
+        collectionView.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
+        addCycleTimer()
+    }
+    
     private func addCycleTimer(){
         cycleTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(scrollToNext), userInfo: nil, repeats: true)
         RunLoop.main.add(cycleTimer!, forMode: RunLoop.Mode.common)
@@ -86,7 +103,7 @@ extension DGCycleView{
     
     @objc private func scrollToNext(){
         let currentOffsetX = collectionView.contentOffset.x
-        let offsetX = currentOffsetX + collectionView.bounds.width
+        let offsetX = currentOffsetX + self.bounds.width
         collectionView.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
     }
 }
@@ -95,23 +112,15 @@ extension DGCycleView: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard models != nil else {return}
-        let scrollViewW = scrollView.bounds.width
+        let scrollViewW = self.bounds.width
         let contentOffsetX = scrollView.contentOffset.x
         
-        let isRight = oldContentOffsetX < contentOffsetX
-        oldContentOffsetX = contentOffsetX
-        
-        if contentOffsetX > (scrollViewW * CGFloat(models!.count - 1) + scrollViewW * 0.5 ) && cycleTimer == nil{
-            pageControl.currentPage = 0
-        } else if contentOffsetX > scrollViewW * CGFloat(models!.count - 1) && cycleTimer != nil && isRight {
-            pageControl.currentPage = 0
-        }else{
-            pageControl.currentPage = Int((contentOffsetX + scrollViewW * 0.5) / scrollViewW)
-        }
-        
-        if contentOffsetX > scrollViewW * CGFloat(models!.count){
-            collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
-        }else if contentOffsetX < 0{
+        pageControl.currentPage = Int((contentOffsetX + scrollViewW * 0.5) / scrollViewW) % models!.count
+     
+        if contentOffsetX >= scrollViewW * CGFloat(models!.count * 2 - 1){
+               print(contentOffsetX - scrollViewW * CGFloat(models!.count) )
+            collectionView.setContentOffset(CGPoint(x:contentOffsetX - scrollViewW * CGFloat(models!.count) , y: 0), animated: false)
+        }else if contentOffsetX < scrollViewW && cycleTimer == nil{
             collectionView.setContentOffset(CGPoint(x: contentOffsetX + scrollViewW * CGFloat(models!.count), y: 0), animated: false)
         }
     }
@@ -125,16 +134,16 @@ extension DGCycleView: UICollectionViewDelegate, UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return models?.count != nil ? models!.count + 1 : 0
+        return models?.count != nil ? models!.count * 2 : 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(DGCycleCell.self)", for: indexPath) as! DGCycleCell
-        if indexPath.row == models!.count{
-            cell.model = models![0]
-        }else{
-            cell.model = models![indexPath.row]
-        }
+        cell.model = models![indexPath.row % models!.count]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.dgcycleViewDidSelected(model: models![indexPath.row])
     }
 }

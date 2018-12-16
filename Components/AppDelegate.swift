@@ -15,7 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // 网络
+        let adImageJPGUrl = "http://img1.126.net/channel6/2016/022471/0805/2.jpg?dpi=6401136"
+        //let adimageGIFUrl = "http://img.ui.cn/data/file/3/4/6/210643.gif"
+        // 本地
+//        let adImageJPGPath = Bundle.main.path(forResource: "adImage2", ofType: "jpg") ?? ""
+//        let adImageGifPath = Bundle.main.path(forResource: "adImage3", ofType: "gif") ?? ""
+        let _ = AdvertisementView(adUrl: adImageJPGUrl, isIgnoreCache: false, placeholderImage: nil, completion: { (isGotoDetailView) in
+            //print(isGotoDetailView)
+        })
+        
         return true
     }
 

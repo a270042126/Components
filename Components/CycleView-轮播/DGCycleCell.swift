@@ -21,6 +21,8 @@ class DGCycleCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         imageView.image = UIImage(named: "timg")
+        imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
         self.contentView.addSubview(imageView)
     }
     
