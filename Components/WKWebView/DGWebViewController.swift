@@ -136,17 +136,4 @@ extension DGWebViewController{
     
 }
 
-extension DGWebViewController: WKNavigationDelegate{
-    
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        
-    }
-    
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        
-    }
-    
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        
-    }
-}
+extension DGWebViewController: WKNavigationDelegate{}
