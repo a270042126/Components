@@ -369,7 +369,7 @@ extension AdvertisementView {
             do {
                 try FileManager.default.removeItem(at: URL(fileURLWithPath: filePath))
             } catch {
-                print(error)
+               // print(error)
                 return false
             }
         }

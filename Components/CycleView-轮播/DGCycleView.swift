@@ -118,7 +118,6 @@ extension DGCycleView: UICollectionViewDelegate, UICollectionViewDataSource{
         pageControl.currentPage = Int((contentOffsetX + scrollViewW * 0.5) / scrollViewW) % models!.count
      
         if contentOffsetX >= scrollViewW * CGFloat(models!.count * 2 - 1){
-               print(contentOffsetX - scrollViewW * CGFloat(models!.count) )
             collectionView.setContentOffset(CGPoint(x:contentOffsetX - scrollViewW * CGFloat(models!.count) , y: 0), animated: false)
         }else if contentOffsetX < scrollViewW && cycleTimer == nil{
             collectionView.setContentOffset(CGPoint(x: contentOffsetX + scrollViewW * CGFloat(models!.count), y: 0), animated: false)
