@@ -99,28 +99,18 @@ extension DGWebViewController{
     private func addKVOObserver(){
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: [NSKeyValueObservingOptions.new,NSKeyValueObservingOptions.old], context: nil)
         webView.addObserver(self, forKeyPath: "canGoBack", options:[NSKeyValueObservingOptions.new,NSKeyValueObservingOptions.old], context: nil)
-        webView.addObserver(self, forKeyPath: "title", options: [NSKeyValueObservingOptions.new,NSKeyValueObservingOptions.old], context: nil)
     }
     
     private func removeKVOObserver(){
         webView.removeObserver(self, forKeyPath: "estimatedProgress")
         webView.removeObserver(self, forKeyPath: "canGoBack")
-        webView.removeObserver(self, forKeyPath: "title")
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress"{
-            progress.alpha = 1
+            progress.isHidden = webView.estimatedProgress >= 1
             progress.setProgress(Float(webView.estimatedProgress), animated: true)
-            if webView.estimatedProgress >= 1{
-                UIView.animate(withDuration: 1, animations: {
-                    self.progress.alpha = 0
-                }) { (_) in
-                    self.progress.setProgress(0, animated: true)
-                }
-            }
-        }else if keyPath == "title"{
-            navigationItem.title = webView.title
+            
         }else if keyPath == "canGoBack"{
             if webView.canGoBack == true{ //创建返回键 关闭键
                 let items = [negativeSpacer, backBarButton, closeBarButton]
@@ -136,4 +126,10 @@ extension DGWebViewController{
     
 }
 
-extension DGWebViewController: WKNavigationDelegate{}
+extension DGWebViewController: WKNavigationDelegate{
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        progress.setProgress(0, animated: false)
+        navigationItem.title = title ?? (webView.title ?? webView.url?.host)
+    }
+}
