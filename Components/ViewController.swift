@@ -29,9 +29,12 @@ class ViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let webVC = DGWebViewController()
-        webVC.urlStr = "http://www.jd.com"
-        navigationController?.pushViewController(webVC, animated: true)
+//        let webVC = DGWebViewController()
+//        webVC.urlStr = "http://www.jd.com"
+//        navigationController?.pushViewController(webVC, animated: true)'
+        
+        let vc = PhotoCollectionController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
