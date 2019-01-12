@@ -25,6 +25,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //print(isGotoDetailView)
         })
         
+        
+        
+        
+//        let leftSideDrawerViewController = ExampleLeftSideDrawerViewController()
+//        let centerViewController = ExampleCenterTableViewController()
+//        let rightSideDrawerViewController = ExampleRightSideDrawerViewController()
+//
+//        let navigationController = UINavigationController(rootViewController: centerViewController)
+//        navigationController.restorationIdentifier = "ExampleCenterNavigationControllerRestorationKey"
+//
+//        let rightSideNavController = UINavigationController(rootViewController: rightSideDrawerViewController)
+//        rightSideNavController.restorationIdentifier = "ExampleRightNavigationControllerRestorationKey"
+//
+//        let leftSideNavController = UINavigationController(rootViewController: leftSideDrawerViewController)
+//        leftSideNavController.restorationIdentifier = "ExampleLeftNavigationControllerRestorationKey"
+//
+//        self.drawerController = DrawerController(centerViewController: navigationController, leftDrawerViewController: leftSideNavController, rightDrawerViewController: rightSideNavController)
+//        self.drawerController.showsShadows = false
+//
+//        self.drawerController.restorationIdentifier = "Drawer"
+//        self.drawerController.maximumRightDrawerWidth = 200.0
+//        self.drawerController.openDrawerGestureModeMask = .all
+//        self.drawerController.closeDrawerGestureModeMask = .all
+//
+//        self.drawerController.drawerVisualStateBlock = { (drawerController, drawerSide, fractionVisible) in
+//            let block = ExampleDrawerVisualStateManager.sharedManager.drawerVisualStateBlock(for: drawerSide)
+//            block?(drawerController, drawerSide, fractionVisible)
+//        }
+//
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        let tintColor = UIColor(red: 29 / 255, green: 173 / 255, blue: 234 / 255, alpha: 1.0)
+//        self.window?.tintColor = tintColor
+//
+//        self.window?.rootViewController = self.drawerController
+        
         return true
     }
 
