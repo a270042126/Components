@@ -18,7 +18,6 @@ class DGCycleView: UIView {
     
     var models:[Any]? {
         didSet{
-            guard models != nil else {return}
             collectionView.reloadData()
             pageControl.numberOfPages = models?.count ?? 0
             resetScroll()
@@ -85,6 +84,7 @@ extension DGCycleView{
     }
     
     private func resetScroll(){
+        guard models != nil else {return}
         removeCycleTimer()
         let offsetX = self.bounds.width * CGFloat(models!.count)
         collectionView.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
@@ -144,6 +144,6 @@ extension DGCycleView: UICollectionViewDelegate, UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.dgcycleViewDidSelected(model: models![indexPath.row])
+        delegate?.dgcycleViewDidSelected(model: models![indexPath.row % models!.count])
     }
 }
