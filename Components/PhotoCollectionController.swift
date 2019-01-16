@@ -72,9 +72,6 @@ extension PhotoCollectionController: UICollectionViewDelegateFlowLayout,UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let pVC = PhotoPageViewController()
-        pVC.photos = photos
-        pVC.currentIndex = indexPath.row
-        navigationController?.pushViewController(pVC, animated: true)
+        
     }
 }

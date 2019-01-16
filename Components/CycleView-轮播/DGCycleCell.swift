@@ -20,6 +20,7 @@ class DGCycleCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        contentView.backgroundColor = UIColor.clear
         imageView.image = UIImage(named: "timg")
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true

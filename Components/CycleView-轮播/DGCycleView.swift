@@ -41,6 +41,7 @@ class DGCycleView: UIView {
         layout.minimumInteritemSpacing = 0
         
         let collectionView = UICollectionView(frame: self!.bounds, collectionViewLayout: layout)
+        collectionView.backgroundColor = UIColor.clear
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isPagingEnabled = true
         collectionView.delegate = self
@@ -86,7 +87,7 @@ extension DGCycleView{
     private func resetScroll(){
         guard models != nil else {return}
         removeCycleTimer()
-        let offsetX = self.bounds.width * CGFloat(models!.count)
+        let offsetX = self.collectionView.frame.width * CGFloat(models!.count)
         collectionView.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
         addCycleTimer()
     }
@@ -102,9 +103,10 @@ extension DGCycleView{
     }
     
     @objc private func scrollToNext(){
+        let scrollViewW = self.collectionView.frame.width
         let currentOffsetX = collectionView.contentOffset.x
-        let offsetX = currentOffsetX + self.bounds.width
-        collectionView.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
+        let index = Int((currentOffsetX + scrollViewW) / scrollViewW)
+        collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .left, animated: true)
     }
 }
 
@@ -112,7 +114,7 @@ extension DGCycleView: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
       
-        let scrollViewW = self.bounds.width
+        let scrollViewW = scrollView.frame.width
         guard models != nil && scrollViewW != 0 else {return}
         let contentOffsetX = scrollView.contentOffset.x
         
