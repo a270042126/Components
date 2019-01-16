@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var drawerController: DrawerController!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // 网络
@@ -28,10 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-//        let leftSideDrawerViewController = ExampleLeftSideDrawerViewController()
-//        let centerViewController = ExampleCenterTableViewController()
-//        let rightSideDrawerViewController = ExampleRightSideDrawerViewController()
-//
+        let leftSideDrawerViewController = LeftViewController()
+        let centerViewController = UINavigationController(rootViewController: ViewController())
+        let rightSideDrawerViewController = RightViewController()
+
 //        let navigationController = UINavigationController(rootViewController: centerViewController)
 //        navigationController.restorationIdentifier = "ExampleCenterNavigationControllerRestorationKey"
 //
@@ -40,26 +40,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //
 //        let leftSideNavController = UINavigationController(rootViewController: leftSideDrawerViewController)
 //        leftSideNavController.restorationIdentifier = "ExampleLeftNavigationControllerRestorationKey"
-//
-//        self.drawerController = DrawerController(centerViewController: navigationController, leftDrawerViewController: leftSideNavController, rightDrawerViewController: rightSideNavController)
-//        self.drawerController.showsShadows = false
-//
-//        self.drawerController.restorationIdentifier = "Drawer"
-//        self.drawerController.maximumRightDrawerWidth = 200.0
-//        self.drawerController.openDrawerGestureModeMask = .all
-//        self.drawerController.closeDrawerGestureModeMask = .all
-//
-//        self.drawerController.drawerVisualStateBlock = { (drawerController, drawerSide, fractionVisible) in
+
+        self.drawerController = DrawerController(centerViewController: centerViewController, leftDrawerViewController: leftSideDrawerViewController, rightDrawerViewController: rightSideDrawerViewController)
+        self.drawerController.showsShadows = false
+
+        self.drawerController.restorationIdentifier = "Drawer"
+        self.drawerController.maximumRightDrawerWidth = 200.0
+        self.drawerController.openDrawerGestureModeMask = .all
+        self.drawerController.closeDrawerGestureModeMask = .all
+
+        self.drawerController.drawerVisualStateBlock = { (drawerController, drawerSide, fractionVisible) in
 //            let block = ExampleDrawerVisualStateManager.sharedManager.drawerVisualStateBlock(for: drawerSide)
 //            block?(drawerController, drawerSide, fractionVisible)
-//        }
-//
-//        self.window = UIWindow(frame: UIScreen.main.bounds)
-//        let tintColor = UIColor(red: 29 / 255, green: 173 / 255, blue: 234 / 255, alpha: 1.0)
-//        self.window?.tintColor = tintColor
-//
-//        self.window?.rootViewController = self.drawerController
-        
+        }
+
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let tintColor = UIColor(red: 29 / 255, green: 173 / 255, blue: 234 / 255, alpha: 1.0)
+        self.window?.tintColor = tintColor
+
+        self.window?.rootViewController = self.drawerController
+        self.window?.makeKeyAndVisible()
         return true
     }
 
