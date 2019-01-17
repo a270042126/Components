@@ -24,6 +24,9 @@
 		631E3C2E21E5BB8500BAE308 /* themify.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 631E3C2921E5BB8500BAE308 /* themify.ttf */; };
 		63483F5F21EF262F00037130 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63483F5E21EF262F00037130 /* LeftViewController.swift */; };
 		63483F6121EF264500037130 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63483F6021EF264500037130 /* RightViewController.swift */; };
+		6353A4AA21F0C27000ABF13B /* DGPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353A4A921F0C27000ABF13B /* DGPresentationController.swift */; };
+		6353A4AC21F0C29B00ABF13B /* PresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353A4AB21F0C29B00ABF13B /* PresentationViewController.swift */; };
+		6353A4AF21F0C32100ABF13B /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353A4AE21F0C32100ABF13B /* FirstVC.swift */; };
 		635FD88621C63D4F007CC2EC /* DGWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635FD88521C63D4F007CC2EC /* DGWebViewController.swift */; };
 		6367F54E21E9E6960086D537 /* DrawerBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367F54921E9E6960086D537 /* DrawerBarButtonItem.swift */; };
 		6367F54F21E9E6960086D537 /* DrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367F54A21E9E6960086D537 /* DrawerController.swift */; };
@@ -86,6 +89,9 @@
 		631E3C2921E5BB8500BAE308 /* themify.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = themify.ttf; sourceTree = "<group>"; };
 		63483F5E21EF262F00037130 /* LeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		63483F6021EF264500037130 /* RightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
+		6353A4A921F0C27000ABF13B /* DGPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGPresentationController.swift; sourceTree = "<group>"; };
+		6353A4AB21F0C29B00ABF13B /* PresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationViewController.swift; sourceTree = "<group>"; };
+		6353A4AE21F0C32100ABF13B /* FirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
 		635FD88521C63D4F007CC2EC /* DGWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGWebViewController.swift; sourceTree = "<group>"; };
 		6367F54921E9E6960086D537 /* DrawerBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerBarButtonItem.swift; sourceTree = "<group>"; };
 		6367F54A21E9E6960086D537 /* DrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerController.swift; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 		63190B3021BFAFA600BEA823 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				6353A4A821F0C22700ABF13B /* DGPresentationController-转场 */,
 				6367F54821E9E6960086D537 /* DrawerController */,
 				631E3C2421E5BB5500BAE308 /* FAIconFont */,
 				635FD88221C63AF3007CC2EC /* WKWebView */,
@@ -211,6 +218,7 @@
 		63483F5C21EF25A100037130 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				6353A4AD21F0C30A00ABF13B /* DGPresentationController */,
 				63483F5D21EF25C500037130 /* DrawerController */,
 			);
 			path = Example;
@@ -223,6 +231,23 @@
 				63483F6021EF264500037130 /* RightViewController.swift */,
 			);
 			path = DrawerController;
+			sourceTree = "<group>";
+		};
+		6353A4A821F0C22700ABF13B /* DGPresentationController-转场 */ = {
+			isa = PBXGroup;
+			children = (
+				6353A4A921F0C27000ABF13B /* DGPresentationController.swift */,
+			);
+			path = "DGPresentationController-转场";
+			sourceTree = "<group>";
+		};
+		6353A4AD21F0C30A00ABF13B /* DGPresentationController */ = {
+			isa = PBXGroup;
+			children = (
+				6353A4AB21F0C29B00ABF13B /* PresentationViewController.swift */,
+				6353A4AE21F0C32100ABF13B /* FirstVC.swift */,
+			);
+			path = DGPresentationController;
 			sourceTree = "<group>";
 		};
 		635FD88221C63AF3007CC2EC /* WKWebView */ = {
@@ -509,6 +534,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6353A4AC21F0C29B00ABF13B /* PresentationViewController.swift in Sources */,
 				631E3C2D21E5BB8500BAE308 /* FAIcon.swift in Sources */,
 				6367F54E21E9E6960086D537 /* DrawerBarButtonItem.swift in Sources */,
 				63190B6921BFC33600BEA823 /* Model.swift in Sources */,
@@ -518,7 +544,9 @@
 				6367F54F21E9E6960086D537 /* DrawerController.swift in Sources */,
 				635FD88621C63D4F007CC2EC /* DGWebViewController.swift in Sources */,
 				6389243A21C5541A008489DF /* String+MD5.swift in Sources */,
+				6353A4AF21F0C32100ABF13B /* FirstVC.swift in Sources */,
 				6367F55121E9E6960086D537 /* DrawerSegue.swift in Sources */,
+				6353A4AA21F0C27000ABF13B /* DGPresentationController.swift in Sources */,
 				63483F5F21EF262F00037130 /* LeftViewController.swift in Sources */,
 				63190B6521BFB14900BEA823 /* DGCycleView.swift in Sources */,
 				6367F55221E9E6960086D537 /* AnimatedMenuButton.swift in Sources */,

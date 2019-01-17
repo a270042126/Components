@@ -54,7 +54,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -65,6 +65,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         switch indexPath.row {
         case 0:
             cell?.textLabel?.text = "WKWebView"
+        case 1:
+            cell?.textLabel?.text = "转场动画"
         default:
             break
         }
@@ -79,6 +81,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
             let vc = DGWebViewController()
             vc.urlStr = "http://www.taobao.com"
             navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let vc = PresentationViewController()
+             navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }
