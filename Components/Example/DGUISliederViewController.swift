@@ -14,6 +14,7 @@ class DGUISliederViewController: UIViewController {
         let slider = MYSlider()
         slider.minimumValue = 0
         slider.maximumValue = 999
+        //slider.isContinuous = false
         return slider
     }()
     
