@@ -36,6 +36,9 @@
 		6389243721C553F1008489DF /* AdvertisementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389243421C553F0008489DF /* AdvertisementView.swift */; };
 		6389243821C553F1008489DF /* GifImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389243521C553F0008489DF /* GifImageOperation.swift */; };
 		6389243A21C5541A008489DF /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389243921C5541A008489DF /* String+MD5.swift */; };
+		6390FEAA21F1E9F90063F29B /* MYSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390FEA921F1E9F90063F29B /* MYSlider.swift */; };
+		6390FEAC21F1EA210063F29B /* alterAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390FEAB21F1EA210063F29B /* alterAnimationView.swift */; };
+		6390FEAE21F1EA450063F29B /* DGUISliederViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390FEAD21F1EA450063F29B /* DGUISliederViewController.swift */; };
 		8400FB19D45D1D59DE4C90D8 /* Pods_ComponentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30A8F88E7D5E8DDD9F4B22C2 /* Pods_ComponentsTests.framework */; };
 		A33D09629B179BBC504DFD26 /* Pods_Components.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22506152236E4C2BB77E41ED /* Pods_Components.framework */; };
 		C858D72EB9B2C3402DD61E7B /* Pods_ComponentsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38D291C2250DC0FDE38237AC /* Pods_ComponentsUITests.framework */; };
@@ -101,6 +104,9 @@
 		6389243421C553F0008489DF /* AdvertisementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvertisementView.swift; sourceTree = "<group>"; };
 		6389243521C553F0008489DF /* GifImageOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifImageOperation.swift; sourceTree = "<group>"; };
 		6389243921C5541A008489DF /* String+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
+		6390FEA921F1E9F90063F29B /* MYSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYSlider.swift; sourceTree = "<group>"; };
+		6390FEAB21F1EA210063F29B /* alterAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = alterAnimationView.swift; sourceTree = "<group>"; };
+		6390FEAD21F1EA450063F29B /* DGUISliederViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGUISliederViewController.swift; sourceTree = "<group>"; };
 		B72DCBEE2E7B903D9EBB403B /* Pods-Components.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Components.release.xcconfig"; path = "Pods/Target Support Files/Pods-Components/Pods-Components.release.xcconfig"; sourceTree = "<group>"; };
 		CDB8F8DFA618B99F73F2643B /* Pods-Components.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Components.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Components/Pods-Components.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +164,7 @@
 		63190B3021BFAFA600BEA823 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				6390FEA421F198FD0063F29B /* DGUISlider */,
 				6353A4A821F0C22700ABF13B /* DGPresentationController-转场 */,
 				6367F54821E9E6960086D537 /* DrawerController */,
 				631E3C2421E5BB5500BAE308 /* FAIconFont */,
@@ -220,6 +227,7 @@
 			children = (
 				6353A4AD21F0C30A00ABF13B /* DGPresentationController */,
 				63483F5D21EF25C500037130 /* DrawerController */,
+				6390FEAD21F1EA450063F29B /* DGUISliederViewController.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -278,6 +286,15 @@
 				6389243921C5541A008489DF /* String+MD5.swift */,
 			);
 			path = "AdvertisementView-广告";
+			sourceTree = "<group>";
+		};
+		6390FEA421F198FD0063F29B /* DGUISlider */ = {
+			isa = PBXGroup;
+			children = (
+				6390FEA921F1E9F90063F29B /* MYSlider.swift */,
+				6390FEAB21F1EA210063F29B /* alterAnimationView.swift */,
+			);
+			path = DGUISlider;
 			sourceTree = "<group>";
 		};
 		BC75C50531CF23DDB044490E /* Frameworks */ = {
@@ -536,6 +553,8 @@
 			files = (
 				6353A4AC21F0C29B00ABF13B /* PresentationViewController.swift in Sources */,
 				631E3C2D21E5BB8500BAE308 /* FAIcon.swift in Sources */,
+				6390FEAE21F1EA450063F29B /* DGUISliederViewController.swift in Sources */,
+				6390FEAA21F1E9F90063F29B /* MYSlider.swift in Sources */,
 				6367F54E21E9E6960086D537 /* DrawerBarButtonItem.swift in Sources */,
 				63190B6921BFC33600BEA823 /* Model.swift in Sources */,
 				6389243721C553F1008489DF /* AdvertisementView.swift in Sources */,
@@ -551,6 +570,7 @@
 				63190B6521BFB14900BEA823 /* DGCycleView.swift in Sources */,
 				6367F55221E9E6960086D537 /* AnimatedMenuButton.swift in Sources */,
 				631E3C2A21E5BB8500BAE308 /* FAIconDict.swift in Sources */,
+				6390FEAC21F1EA210063F29B /* alterAnimationView.swift in Sources */,
 				6389243821C553F1008489DF /* GifImageOperation.swift in Sources */,
 				63190B3221BFAFA600BEA823 /* AppDelegate.swift in Sources */,
 				63190B6721BFB67600BEA823 /* DGCycleCell.swift in Sources */,

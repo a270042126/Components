@@ -54,7 +54,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -67,6 +67,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
             cell?.textLabel?.text = "WKWebView"
         case 1:
             cell?.textLabel?.text = "转场动画"
+        case 2:
+            cell?.textLabel?.text = "点击滑动"
         default:
             break
         }
@@ -84,6 +86,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         case 1:
             let vc = PresentationViewController()
              navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            let vc = DGUISliederViewController()
+            navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }
