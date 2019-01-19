@@ -161,16 +161,19 @@ class DGPopoverAnimatior: NSObject, UIViewControllerAnimatedTransitioning, UIVie
     }
 }
 
-private var popoverAnimatorKey: Void?
 extension UIViewController{
+    
+    private struct AssociatedKeys {
+        static var popoverPopGesture: Void?
+    }
    
     var popoverAnimator: DGPopoverAnimatior?{
         get{
-            return objc_getAssociatedObject(self, &popoverAnimatorKey) as? DGPopoverAnimatior
+            return objc_getAssociatedObject(self, &AssociatedKeys.popoverPopGesture) as? DGPopoverAnimatior
         }
         set{
             objc_setAssociatedObject(self,
-                                     &popoverAnimatorKey, newValue,
+                                     &AssociatedKeys.popoverPopGesture, newValue,
                                      .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
